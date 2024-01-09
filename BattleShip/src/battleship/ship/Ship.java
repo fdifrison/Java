@@ -5,7 +5,7 @@ import battleship.Coordinate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ship {
+public abstract class Ship {
 
     ShipCoordinates coordinates;
     int length;
@@ -14,7 +14,6 @@ public class Ship {
     public Ship(ShipCoordinates coordinates) {
         this.coordinates = coordinates;
         shipParts.addAll(coordinates.getAll().stream().map(Coordinate::toString).toList());
-        length = coordinates.getAll().size();
     }
 
     public void printShipDetails() {
