@@ -6,4 +6,11 @@ public class Destroyer extends Ship{
     public Destroyer(ShipCoordinates coordinates) {
         super(coordinates);
     }
+
+    @Override
+    public int getLength() {
+        return length;
+    }
+
+
 }

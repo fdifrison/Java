@@ -6,4 +6,11 @@ public class Cruiser extends Ship{
     public Cruiser(ShipCoordinates coordinates) {
         super(coordinates);
     }
+
+    @Override
+    public int getLength() {
+        return length;
+    }
+
+
 }

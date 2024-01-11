@@ -3,7 +3,7 @@ package battleship.ship;
 public class ShipFactory {
 
     public Ship create(String shipType, ShipCoordinates coordinates) {
-        return switch (shipType) {
+        return switch (shipType.trim()) {
             case "Aircraft Carrier" -> new AircraftCarrier(coordinates);
             case "Battleship" -> new Battleship(coordinates);
             case "Submarine" -> new Submarine(coordinates);

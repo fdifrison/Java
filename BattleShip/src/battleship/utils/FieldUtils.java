@@ -22,7 +22,7 @@ public class FieldUtils {
         letterToNumberMap.put('G', 7);
         letterToNumberMap.put('H', 8);
         letterToNumberMap.put('I', 9);
-        letterToNumberMap.put('K', 10);
+        letterToNumberMap.put('J', 10);
 
         for (Map.Entry<Character, Integer> entry : letterToNumberMap.entrySet()) {
             numberToLetterMap.put(entry.getValue(), entry.getKey());

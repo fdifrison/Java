@@ -13,6 +13,7 @@ public abstract class Ship {
 
     public Ship(ShipCoordinates coordinates) {
         this.coordinates = coordinates;
+        this.length = getLength();
         shipParts.addAll(coordinates.getAll().stream().map(Coordinate::toString).toList());
     }
 
@@ -26,7 +27,26 @@ public abstract class Ship {
     }
 
     public boolean overlaps(Ship that) {
-        return this.coordinates.getAll().stream().anyMatch(c -> that.coordinates.getAll().contains(c));
+        return this.coordinates.getSpaceTaken().stream().anyMatch(c -> that.coordinates.getAll().contains(c));
     }
 
+    public abstract int getLength();
+
+    public String getShipName() {
+        var name = this.getClass().getSimpleName().split("(?=[A-Z])");
+        return String.join(" ", name);
+    }
+
+    public Ship isValid() {
+        if (this.shipParts.size() == length) {
+            return this;
+        } else {
+            System.out.printf("Error! Wrong length of the %s! Try again:%n", getShipName());
+            return null;
+        }
+    }
+
+    public ShipCoordinates getCoordinates() {
+        return coordinates;
+    }
 }

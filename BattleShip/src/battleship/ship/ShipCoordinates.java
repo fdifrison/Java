@@ -19,17 +19,23 @@ public class ShipCoordinates {
     Coordinate end;
 
     List<Coordinate> shipCoordinates = new ArrayList<>();
+    List<Coordinate> spaceTaken = new ArrayList<>();
 
     public ShipCoordinates(List<Coordinate> coordinates) {
         this.start = coordinates.get(0);
         this.end = coordinates.get(1);
         setShipCoordinates();
+        computeSpaceTaken();
     }
 
     public boolean isValid() {
-        return !start.equals(end) &&
+        if (!start.equals(end) &&
                 isValidCoordinates(start, end) &&
-                Stream.of(shipCoordinates).allMatch(CoordinatesUtils::isValidRange);
+                Stream.of(shipCoordinates).allMatch(CoordinatesUtils::isValidRange)) {
+            return true;
+        }
+        System.out.println("Error! Wrong ship location! Try again:");
+        return false;
     }
 
 
@@ -68,6 +74,26 @@ public class ShipCoordinates {
         addCoordinatesInRange(fromY, toY, fixedX, (a, b) -> new Coordinate(b, a));
     }
 
+    private void computeSpaceTaken() {
+        for (Coordinate c : shipCoordinates) {
+            addSpaceTaken(c);
+            addSpaceTaken(CoordinatesUtils.shiftNSEW(c));
+        }
+    }
+
+    public void addSpaceTaken(Coordinate c) {
+        if (!spaceTaken.contains(c)) spaceTaken.add(c);
+    }
+
+    public void addSpaceTaken(List<Coordinate> cList) {
+        for (Coordinate c : cList) {
+            addSpaceTaken(c);
+        }
+    }
+
+    public List<Coordinate> getSpaceTaken() {
+        return spaceTaken;
+    }
 
     public List<Coordinate> getAll() {
         return shipCoordinates;

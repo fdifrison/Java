@@ -2,6 +2,7 @@ package battleship.utils;
 
 import battleship.Coordinate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CoordinatesUtils {
@@ -29,6 +30,27 @@ public class CoordinatesUtils {
 
     private static boolean isValidRange(int num) {
         return num > 0 && num <= 10;
+    }
+
+    public static List<Coordinate> shiftNSEW(Coordinate c) {
+        List<Coordinate> list = new ArrayList<>();
+        var c1 = new Coordinate(c.getX() + 1, c.getY());
+        var c2 = new Coordinate(c.getX() + -1, c.getY());
+        var c3 = new Coordinate(c.getX() , c.getY() +1);
+        var c4 = new Coordinate(c.getX() + 1, c.getY() -1);
+        var c5 = new Coordinate(c.getX() - 1, c.getY() -1);
+        var c6 = new Coordinate(c.getX() + 1, c.getY() +1);
+        var c7 = new Coordinate(c.getX() + 1, c.getY() -1);
+        var c8 = new Coordinate(c.getX() - 1, c.getY() +1);
+        list.add(c1);
+        list.add(c2);
+        list.add(c3);
+        list.add(c4);
+        list.add(c5);
+        list.add(c6);
+        list.add(c7);
+        list.add(c8);
+        return list;
     }
 
 }

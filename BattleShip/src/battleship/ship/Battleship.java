@@ -6,4 +6,11 @@ public class Battleship extends Ship{
     public Battleship(ShipCoordinates coordinates) {
         super(coordinates);
     }
+
+    @Override
+    public int getLength() {
+        return length;
+    }
+
+
 }

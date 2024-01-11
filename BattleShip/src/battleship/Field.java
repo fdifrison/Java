@@ -10,9 +10,9 @@ import java.util.List;
 public class Field {
 
     private final String FOG = "~";
-    private final String SHIP  = "O";
-    private final String HIT  = "X";
-    private final String MISS  = "M";
+    private final String SHIP = "O";
+    private final String HIT = "X";
+    private final String MISS = "M";
     List<Ship> ships = new ArrayList<>();
     private String[][] field = {
             {FOG, FOG, FOG, FOG, FOG, FOG, FOG, FOG, FOG, FOG},
@@ -40,7 +40,7 @@ public class Field {
         }
     }
 
-    void setShipOnField(int i, int j) {
+    void setShipPartOnField(int i, int j) {
         field[i][j] = SHIP;
     }
 
@@ -56,7 +56,23 @@ public class Field {
         return ships;
     }
 
-    public void addShip(Ship ship) {
+    private void addShip(Ship ship) {
         this.ships.add(ship);
     }
+
+    private void setShipOnField(Ship ship){
+        ship.getCoordinates().getAll().forEach(c -> {
+            field[c.getY()-1][c.getX()-1] = SHIP;
+        });
+    }
+
+    public void tryAddShipToFleet(Ship that) {
+        if (ships.stream().noneMatch(ship -> ship.overlaps(that))) {
+            addShip(that);
+            setShipOnField(that);
+        } else {
+            System.out.println("Error! You placed it too close to another one. Try again:");
+        }
+    }
+
 }

@@ -6,4 +6,11 @@ public class AircraftCarrier extends Ship {
     public AircraftCarrier(ShipCoordinates coordinates) {
         super(coordinates);
     }
+
+    @Override
+    public int getLength() {
+        return length;
+    }
+
+
 }

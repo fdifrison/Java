@@ -1,3 +1,4 @@
+package unaryencoder;
 
 import java.util.ArrayList;
 import java.util.List;
