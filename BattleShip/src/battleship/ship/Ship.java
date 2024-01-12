@@ -11,9 +11,10 @@ public abstract class Ship {
     int length;
     List<String> shipParts = new ArrayList<>();
 
-    public Ship(ShipCoordinates coordinates) {
+    int hits = 0;
+
+    protected Ship(ShipCoordinates coordinates) {
         this.coordinates = coordinates;
-        this.length = getLength();
         shipParts.addAll(coordinates.getAll().stream().map(Coordinate::toString).toList());
     }
 
@@ -30,7 +31,9 @@ public abstract class Ship {
         return this.coordinates.getSpaceTaken().stream().anyMatch(c -> that.coordinates.getAll().contains(c));
     }
 
-    public abstract int getLength();
+    public int getLength() {
+        return length;
+    };
 
     public String getShipName() {
         var name = this.getClass().getSimpleName().split("(?=[A-Z])");
@@ -48,5 +51,17 @@ public abstract class Ship {
 
     public ShipCoordinates getCoordinates() {
         return coordinates;
+    }
+
+    public void setHits() {
+        this.hits ++;
+    }
+
+    public int getHits() {
+        return hits;
+    }
+
+    public boolean isDead() {
+        return getLength() <= getHits();
     }
 }

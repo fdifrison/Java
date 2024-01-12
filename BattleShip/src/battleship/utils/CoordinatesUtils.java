@@ -29,7 +29,7 @@ public class CoordinatesUtils {
     }
 
     private static boolean isValidRange(int num) {
-        return num > 0 && num <= 10;
+        return num >= 0 && num < 10;
     }
 
     public static List<Coordinate> shiftNSEW(Coordinate c) {

@@ -10,12 +10,12 @@ import static battleship.utils.FieldUtils.numberToLetter;
 
 public class Coordinate implements Comparable<Coordinate> {
 
-    int x;
-    int y;
+    private final int x;
+    private final int y;
 
     public Coordinate(String input) {
-        x = ScannerUtils.getIfNumber(input.substring(1));
-        y = FieldUtils.letterToNumber(input.charAt(0));
+        x = ScannerUtils.getIfNumber(input.substring(1)) -1;
+        y = FieldUtils.letterToNumber(input.charAt(0)) -1;
     }
 
     public Coordinate(int x, int y) {
