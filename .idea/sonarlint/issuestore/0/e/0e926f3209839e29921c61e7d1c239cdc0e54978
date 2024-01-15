@@ -1,0 +1,9 @@
+
+X
+java:S1854"=Remove this useless assignment to local variable "intervals".(ŽÒæœþÿÿÿÿ
+T
+java:S1854"9Remove this useless assignment to local variable "roads".(‡Ä–ªùÿÿÿÿ
+E
+java:S1481"*Remove this unused "roads" local variable.(‡Ä–ªùÿÿÿÿ
+I
+java:S1481".Remove this unused "intervals" local variable.(ŽÒæœþÿÿÿÿ
