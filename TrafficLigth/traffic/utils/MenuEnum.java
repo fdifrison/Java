@@ -1,20 +1,21 @@
 package traffic.utils;
 
-public enum MenuEnum {
-    ADD_ROAD(1, "Add road", "Road added"),
-    DELETE_ROAD(2, "Delete road", "Road deleted"),
-    OPEN_SYSTEM(3, "Open system", "System opened"),
-    QUIT(0, "Quit", "Bye!"),
+import traffic.threads.*;
 
-    ERROR(-1, "Error","Incorrect option");
+public enum MenuEnum {
+    ADD_ROAD(1, "Add road", new AddThread()),
+    DELETE_ROAD(2, "Delete road", new DeleteThread()),
+    OPEN_SYSTEM(3, "Open system", new SystemThread()),
+    QUIT(0, "Quit", new QuitThread()),
+    ERROR(-1, "Error", new ErrorThread());
 
     final int value;
 
     final String description;
 
-    final String action;
+    final ITrafficThread action;
 
-    MenuEnum(int value, String description, String action) {
+    MenuEnum(int value, String description, ITrafficThread action) {
         this.value = value;
         this.description = description;
         this.action = action;
@@ -24,17 +25,23 @@ public enum MenuEnum {
         return value;
     }
 
-
-
     public String getDescription() {
         return description;
+    }
+
+    public Thread getThread() {
+        Thread thread = new Thread(action);
+        thread.setName(action.getClass().getSimpleName());
+        return thread;
     }
 
 
 
     public void getAction() {
-        System.out.println(action);
+        action.getDescription();
     }
+
+
 
     public static MenuEnum getSelection(int i) {
         for (MenuEnum m : MenuEnum.values()) {
@@ -42,8 +49,6 @@ public enum MenuEnum {
         }
         return ERROR;
     }
-
-
 
 
 }
