@@ -10,6 +10,13 @@ public class ScannerUtils {
     private ScannerUtils() {
     }
 
+    public static void readEmptyLine() {
+        scanner.nextLine();
+    }
+    public static String readLine() {
+        return scanner.nextLine();
+    }
+
     public static int getUserInput(String exceptionMsg) {
         try {
             int input;

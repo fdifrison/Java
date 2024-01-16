@@ -1,6 +1,13 @@
 package traffic.threads;
 
-public interface ITrafficThread extends Runnable {
+import traffic.utils.CircularQueue;
 
-    void getDescription();
+public interface ITrafficThread {
+
+    void startThread(int... args);
+    void setThreadState(ThreadState state);
+
+    void setQueue(CircularQueue queue);
+
+
 }

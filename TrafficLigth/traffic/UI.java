@@ -1,11 +1,14 @@
 package traffic;
 
-import traffic.threads.QueueThread;
+import traffic.menu.MainMenu;
+import traffic.menu.Menu;
+import traffic.threads.ITrafficThread;
 import traffic.threads.ThreadState;
-import traffic.utils.MenuEnum;
+import traffic.utils.CircularQueue;
 import traffic.utils.ScannerUtils;
 
-import java.io.IOException;
+import java.util.NoSuchElementException;
+
 
 public class UI {
 
@@ -13,51 +16,57 @@ public class UI {
 
     int intervals;
 
-    static QueueThread systemThread;
+    static ITrafficThread systemThread;
 
-    public void run() throws IOException {
-        Menu.intro();
+    public void run() {
+        MainMenu.intro();
         System.out.print("Input the number of roads:");
         roads = ScannerUtils.getUserInput("Error! Incorrect Input. Try again:");
         System.out.print("Input the interval:");
         intervals = ScannerUtils.getUserInput("Error! Incorrect Input. Try again:");
-        systemThread = new QueueThread(roads, intervals);
-        systemThread.setState(ThreadState.ON_MENU);
-        systemThread.start();
+        systemThread = Menu.OPEN_SYSTEM.getMenu().getThread();
+        systemThread.startThread(roads, intervals);
+        var queue = Menu.ADD_ROAD.getMenu().initQueue(roads);
+        systemThread.setQueue(queue);
         ScannerUtils.clearScreen();
+        execute(queue);
+    }
+
+    public static void execute(CircularQueue queue) {
         while (true) {
-            Menu.show();
-            var selection = ScannerUtils.getUserSelection();
-            var action = MenuEnum.getSelection(selection);
-            if (isQUIT(action)) {
-                systemThread.interrupt();
-                return;
+            MainMenu.show();
+            var action = Menu.getSelection();
+            switch (action) {
+                case ADD_ROAD:
+                    action.getMenu().getUserInput();
+                    ScannerUtils.readEmptyLine();
+                    break;
+                case DELETE_ROAD:
+                    try {
+                        var road = queue.pop();
+                        System.out.printf("%s deleted%n", road);
+                    } catch (NoSuchElementException e) {
+                        System.out.println("queue is empty");
+                    }
+                    ScannerUtils.readEmptyLine();
+                    break;
+                case OPEN_SYSTEM:
+                    systemThread.setThreadState(ThreadState.ON_SYSTEM);
+                    ScannerUtils.readEmptyLine();
+                    systemThread.setThreadState(ThreadState.ON_MENU);
+                    break;
+                case QUIT:
+                    systemThread.setThreadState(ThreadState.KILL);
+                    action.getMenu().showText();
+                    return;
+                case ERROR:
+                default:
+                    System.out.println("incorrect option");
+                    ScannerUtils.readEmptyLine();
+                    break;
             }
-            if (isSYSTEM(action)) {
-                continue;
-            } else {
-                action.getAction();
-                ScannerUtils.readAndClearScreen();
-            }
+            ScannerUtils.clearScreen();
         }
-    }
-
-    private static boolean isQUIT(MenuEnum action) {
-        if (action.equals(MenuEnum.QUIT)) {
-            action.getAction();
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean isSYSTEM(MenuEnum action) throws IOException {
-        if (action.equals(MenuEnum.OPEN_SYSTEM)) {
-            systemThread.setState(ThreadState.ON_SYSTEM);
-            System.in.read();
-            systemThread.setState(ThreadState.ON_MENU);
-            return true;
-        }
-        return false;
     }
 
 
