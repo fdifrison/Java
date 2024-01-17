@@ -1,86 +1,72 @@
 package traffic.threads;
 
-import traffic.utils.CircularQueue;
+import traffic.model.UserConfig;
+import traffic.service.QueueService;
 import traffic.utils.ScannerUtils;
 
-import java.util.ArrayDeque;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class QueueThread extends Thread implements ITrafficThread {
+public class QueueThread extends Thread {
 
     private ThreadState state;
-    private CircularQueue queue;
+    private final QueueService queueService;
+    private final Timer timer = new Timer();
+
     int executionTime = 0;
-    int roads;
-    int intervals;
 
-    public QueueThread() {
+    public QueueThread( QueueService queueService) {
         super("QueueThread");
         this.state = ThreadState.NOT_STARTED;
-    }
-
-    public QueueThread(int roads, int intervals) {
-        super("QueueThread");
-        this.state = ThreadState.NOT_STARTED;
-        this.roads = roads;
-        this.intervals = intervals;
+        this.queueService = queueService;
     }
 
 
     @Override
-    public void run() {
+    public synchronized void run() {
         while (!currentThread().isInterrupted()) {
-            try {
-                if (this.state == ThreadState.ON_MENU) {
-                    this.sleep(1000);
-                    executionTime++;
-                }
                 if (this.state == ThreadState.ON_SYSTEM) {
-                    ScannerUtils.clearScreen();
-                    System.out.printf("! %ds. have passed since system startup !%n", getExecutionTime());
-                    System.out.printf("! Number of roads: %s !%n", roads);
-                    System.out.printf("! Interval: %s !%n", intervals);
-                    queue.printQueue();
-                    System.out.println("! Press \"Enter\" to open menu !");
-                    this.sleep(1000);
-                    executionTime++;
+                    ScannerUtils.clearScreen(false);
+                    printSystemInfo();
+                    try {
+                        this.wait(1000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 } else if (this.state == ThreadState.KILL) {
+                    timer.cancel();
                     return;
                 }
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 
-
-
-    public void setRoads(int roads) {
-        this.roads = roads;
-    }
-
-    public void setIntervals(int intervals) {
-        this.intervals = intervals;
-    }
-
-    public int getExecutionTime() {
-        return executionTime;
-    }
-
     @Override
-    public void startThread(int... args) {
-        setRoads(args[0]);
-        setIntervals(args[1]);
-        setThreadState(ThreadState.ON_MENU);
-        this.start();
+    public synchronized void start() {
+        timer();
+        super.start();
     }
 
-    @Override
-    public void setThreadState(ThreadState state) {
+    private void timer() {
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                executionTime++;
+            }
+        }, 0, 1000);
+    }
+
+
+    private synchronized void printSystemInfo() {
+        queueService.printSystemHeader(executionTime);
+        queueService.printSystemBody();
+        queueService.printSystemFooter();
+    }
+
+
+
+    
+
+    public void setState(ThreadState state) {
         this.state = state;
-    }
-
-    @Override
-    public void setQueue(CircularQueue queue) {
-        this.queue = queue;
     }
 }

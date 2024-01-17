@@ -1,72 +1,85 @@
 package traffic;
 
-import traffic.menu.MainMenu;
-import traffic.menu.Menu;
-import traffic.threads.ITrafficThread;
-import traffic.threads.ThreadState;
-import traffic.utils.CircularQueue;
+import traffic.model.CircularQueue;
+import traffic.model.Road;
+import traffic.model.UserConfig;
+import traffic.service.QueueService;
+import traffic.service.RoadService;
+import traffic.service.ThreadService;
+import traffic.threads.QueueThread;
 import traffic.utils.ScannerUtils;
-
-import java.util.NoSuchElementException;
 
 
 public class UI {
 
-    int roads;
-
-    int intervals;
-
-    static ITrafficThread systemThread;
+    private UserConfig config;
+    private RoadService roadService;
+    private ThreadService threadService;
+    private QueueService queueService;
 
     public void run() {
-        MainMenu.intro();
-        System.out.print("Input the number of roads:");
-        roads = ScannerUtils.getUserInput("Error! Incorrect Input. Try again:");
-        System.out.print("Input the interval:");
-        intervals = ScannerUtils.getUserInput("Error! Incorrect Input. Try again:");
-        systemThread = Menu.OPEN_SYSTEM.getMenu().getThread();
-        systemThread.startThread(roads, intervals);
-        var queue = Menu.ADD_ROAD.getMenu().initQueue(roads);
-        systemThread.setQueue(queue);
-        ScannerUtils.clearScreen();
-        execute(queue);
+        Menu.intro();
+        configPhase();
+        menuSelection();
     }
 
-    public static void execute(CircularQueue queue) {
+    private void configPhase() {
+        config = Menu.setUserConfig();
+        queueService = new QueueService(config);
+        roadService = new RoadService(queueService);
+        threadService = new ThreadService(new QueueThread(queueService));
+        threadService.startThread();
+    }
+
+    private void menuSelection() {
         while (true) {
-            MainMenu.show();
-            var action = Menu.getSelection();
-            switch (action) {
-                case ADD_ROAD:
-                    action.getMenu().getUserInput();
-                    ScannerUtils.readEmptyLine();
+            Menu.show();
+            var selection = ScannerUtils.getUserSelection();
+            switch (selection) {
+                case 1:
+                    addRoad();
                     break;
-                case DELETE_ROAD:
-                    try {
-                        var road = queue.pop();
-                        System.out.printf("%s deleted%n", road);
-                    } catch (NoSuchElementException e) {
-                        System.out.println("queue is empty");
-                    }
-                    ScannerUtils.readEmptyLine();
+                case 2:
+                    removeRoad();
                     break;
-                case OPEN_SYSTEM:
-                    systemThread.setThreadState(ThreadState.ON_SYSTEM);
-                    ScannerUtils.readEmptyLine();
-                    systemThread.setThreadState(ThreadState.ON_MENU);
+                case 3:
+                    openSystemMenu();
                     break;
-                case QUIT:
-                    systemThread.setThreadState(ThreadState.KILL);
-                    action.getMenu().showText();
+                case 0:
+                    quitApp();
                     return;
-                case ERROR:
                 default:
-                    System.out.println("incorrect option");
-                    ScannerUtils.readEmptyLine();
+                    exception();
                     break;
             }
-            ScannerUtils.clearScreen();
+            ScannerUtils.clearScreen(false);
         }
+    }
+
+    private static void exception() {
+        System.out.println("Incorrect option!");
+        ScannerUtils.readEmptyLine();
+    }
+
+    private void quitApp() {
+        threadService.killThread();
+        System.out.println("Bye!");
+    }
+
+    private void openSystemMenu() {
+        threadService.openThread();
+    }
+
+    private void removeRoad() {
+        roadService.removeRoad();
+        ScannerUtils.readEmptyLine();
+    }
+
+    private void addRoad() {
+        System.out.print("Input road name: ");
+        var roadName = ScannerUtils.getUserInput();
+        roadService.addRoad(new Road(roadName, config.intervals()));
+        ScannerUtils.readEmptyLine();
     }
 
 

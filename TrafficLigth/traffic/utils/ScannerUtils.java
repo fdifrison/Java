@@ -31,6 +31,10 @@ public class ScannerUtils {
         }
     }
 
+    public static String getUserInput() {
+        return scanner.nextLine();
+    }
+
     public static int getUserSelection() {
         try {
             return Integer.parseInt(scanner.nextLine());
@@ -39,20 +43,9 @@ public class ScannerUtils {
         }
     }
 
-    public static void clearScreen() {
+    public static void clearScreen(boolean pressEnterToContinue) {
         try {
-            var clearCommand = System.getProperty("os.name").contains("Windows")
-                    ? new ProcessBuilder("cmd", "/c", "cls")
-                    : new ProcessBuilder("clear");
-            clearCommand.inheritIO().start().waitFor();
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static void readAndClearScreen() {
-        try {
-            System.in.read();
+            if (pressEnterToContinue) System.in.read();
             var clearCommand = System.getProperty("os.name").contains("Windows")
                     ? new ProcessBuilder("cmd", "/c", "cls")
                     : new ProcessBuilder("clear");
