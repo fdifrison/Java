@@ -1,6 +1,7 @@
 package advisor.pattern.command;
 
 import advisor.dto.Categories;
+import advisor.dto.Pagination;
 import advisor.pattern.invoker.CategoryButton;
 import advisor.server.SpotifyAPIService;
 
@@ -25,5 +26,15 @@ public class CategoryCmd extends Command<SpotifyAPIService> {
 
         categories.forEach(button::printCategoryDetails);
 
+    }
+
+    @Override
+    public void execute(SpotifyAPIService service, String s) {
+
+    }
+
+    @Override
+    public Pagination getPagination() {
+        return null;
     }
 }

@@ -39,10 +39,24 @@ public class UI {
             String playlist = getPlaylist();
             switch (input) {
                 case "auth" -> receiver.getAuth();
-                case "new" -> receiver.getNewRelease();
-                case "featured" -> receiver.getFeatured();
-                case "categories" -> receiver.getCategories();
-                case "playlists" -> receiver.getPlaylist(playlist);
+                case "new" -> {
+                    receiver.resetLastCmd();
+                    receiver.getNewRelease();
+                }
+                case "featured" -> {
+                    receiver.resetLastCmd();
+                    receiver.getFeatured();
+                }
+                case "categories" -> {
+                    receiver.resetLastCmd();
+                    receiver.getCategories();
+                }
+                case "playlists" -> {
+                    receiver.resetLastCmd();
+                    receiver.getPlaylist(playlist);
+                }
+                case "next" -> receiver.getLastCommandNext(input);
+                case "prev" -> receiver.getLastCommandPrev(input);
                 case "exit" -> {
                     receiver.quit();
                     return;

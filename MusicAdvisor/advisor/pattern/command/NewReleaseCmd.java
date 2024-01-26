@@ -1,6 +1,7 @@
 package advisor.pattern.command;
 
 import advisor.dto.Albums;
+import advisor.dto.Pagination;
 import advisor.pattern.invoker.NewReleaseButton;
 import advisor.server.SpotifyAPIService;
 
@@ -21,6 +22,17 @@ public class NewReleaseCmd extends Command<SpotifyAPIService> {
 
         albums.forEach(this.newReleaseButton::printAlbumDetails);
 
+
+    }
+
+    @Override
+    public void execute(SpotifyAPIService service, String s) {
+
+    }
+
+    @Override
+    public Pagination getPagination() {
+        return null;
     }
 
 

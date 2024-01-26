@@ -1,6 +1,7 @@
 package advisor.pattern;
 
 import advisor.pattern.command.Command;
+import advisor.pattern.command.LastCmd;
 import advisor.server.SpotifyAPIService;
 import advisor.server.SpotifyAuthService;
 
@@ -12,6 +13,8 @@ public class Receiver {
     Command<SpotifyAPIService> categoriesCdm;
     Command<SpotifyAPIService> playlistCmd;
     Command<SpotifyAPIService> quitCmd;
+
+    LastCmd lastCmd;
 
     SpotifyAuthService authService = new SpotifyAuthService();
     SpotifyAPIService apiService = new SpotifyAPIService();
@@ -42,8 +45,10 @@ public class Receiver {
     }
 
     public void getFeatured() {
-        if (authService.isLogged()) featuredCmd.execute(apiService);
-        else authService.noAuth();
+        if (authService.isLogged()) {
+            featuredCmd.execute(apiService);
+            this.lastCmd = new LastCmd(featuredCmd);
+        } else authService.noAuth();
     }
 
     public void getCategories() {
@@ -57,7 +62,23 @@ public class Receiver {
         else authService.noAuth();
     }
 
+    public void getLastCommandNext(String s) {
+        if (lastCmd == null) return;
+        lastCmd.execute(apiService, s);
+    }
+
+    public void getLastCommandPrev(String s) {
+        if (lastCmd == null) return;
+        lastCmd.execute(apiService, s);
+    }
+
     public void quit() {
+        quitCmd.execute(apiService);
+    }
+
+
+    public void resetLastCmd() {
+        lastCmd = null;
     }
 
 }

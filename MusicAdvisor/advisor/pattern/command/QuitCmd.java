@@ -1,5 +1,6 @@
 package advisor.pattern.command;
 
+import advisor.dto.Pagination;
 import advisor.pattern.invoker.QuitButton;
 import advisor.server.SpotifyAPIService;
 
@@ -14,5 +15,15 @@ public class QuitCmd extends Command<SpotifyAPIService> {
     @Override
     public void execute(SpotifyAPIService service) {
         button.print();
+    }
+
+    @Override
+    public void execute(SpotifyAPIService service, String s) {
+
+    }
+
+    @Override
+    public Pagination getPagination() {
+        return null;
     }
 }

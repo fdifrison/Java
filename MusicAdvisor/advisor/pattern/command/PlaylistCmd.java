@@ -1,6 +1,7 @@
 package advisor.pattern.command;
 
 import advisor.dto.Categories;
+import advisor.dto.Pagination;
 import advisor.dto.Playlists;
 import advisor.pattern.invoker.PlaylistButton;
 import advisor.server.SpotifyAPIService;
@@ -37,6 +38,16 @@ public class PlaylistCmd extends Command<SpotifyAPIService> {
         playlists.forEach(button::printPlaylistDetails);
         ;
 
+    }
+
+    @Override
+    public void execute(SpotifyAPIService service, String s) {
+
+    }
+
+    @Override
+    public Pagination getPagination() {
+        return null;
     }
 
 }

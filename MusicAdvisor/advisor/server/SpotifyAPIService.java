@@ -10,12 +10,13 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class SpotifyAPIService implements IService{
+public class SpotifyAPIService implements IService {
 
     private final String API_ENDPOINT = Main.API_URL == null ? "https://api.spotify.com/v1/browse" : Main.API_URL + "/v1/browse";
     private JsonObject Token;
     private String selectedPlaylist;
     HttpClient client = HttpClient.newBuilder().build();
+    HttpResponse<String> response;
 
     public JsonObject getNewReleases() {
         return getJsonObject("/new-releases");
@@ -34,15 +35,29 @@ public class SpotifyAPIService implements IService{
     }
 
     private JsonObject getJsonObject(String apiPath) {
-        HttpResponse<String> response;
         try {
-        HttpRequest request = HttpRequest.newBuilder()
-                .header("Authorization", "Bearer " + Token.get("access_token").getAsString())
-                .uri(URI.create(API_ENDPOINT + apiPath))
-                .GET()
-                .build();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .header("Authorization", "Bearer " + Token.get("access_token").getAsString())
+                    .uri(URI.create(API_ENDPOINT + apiPath + "?limit=" + Main.ELEMENT_PER_PAGE))
+                    .GET()
+                    .build();
 
-        response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            return JsonParser.parseString(response.body()).getAsJsonObject();
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public JsonObject getNextOrPrev(String uri) {
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .header("Authorization", "Bearer " + Token.get("access_token").getAsString())
+                    .uri(URI.create(uri))
+                    .GET()
+                    .build();
+
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
             return JsonParser.parseString(response.body()).getAsJsonObject();
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);

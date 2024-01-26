@@ -1,5 +1,6 @@
 package advisor.pattern.command;
 
+import advisor.dto.Pagination;
 import advisor.pattern.invoker.AuthButton;
 import advisor.server.HTTPClientServer;
 import advisor.server.SpotifyAuthService;
@@ -31,6 +32,16 @@ public class AuthCmd extends Command<SpotifyAuthService> {
         service.setLogged(true);
         service.okAuth();
         System.out.println();
+    }
+
+    @Override
+    public void execute(SpotifyAuthService service, String s) {
+
+    }
+
+    @Override
+    public Pagination getPagination() {
+        return null;
     }
 
 
