@@ -1,19 +1,30 @@
 package advisor.pattern.command;
 
-import advisor.pattern.invoker.Button;
+import advisor.dto.Albums;
+import advisor.pattern.invoker.NewReleaseButton;
+import advisor.server.SpotifyAPIService;
 
-public class NewReleaseCmd implements ICommand {
+public class NewReleaseCmd extends Command<SpotifyAPIService> {
 
-    private final Button newReleaseButton;
+    private final NewReleaseButton newReleaseButton;
 
-    public NewReleaseCmd(Button newReleaseButton) {
+    public NewReleaseCmd(NewReleaseButton newReleaseButton) {
         this.newReleaseButton = newReleaseButton;
     }
 
     @Override
-    public void execute() {
-        this.newReleaseButton.print();
+    public void execute(SpotifyAPIService service) {
+
+        var response = service.getNewReleases();
+        if (isError(response)) return ;
+        var albums = getItemList(response, Albums.class);
+
+        albums.forEach(this.newReleaseButton::printAlbumDetails);
+
     }
 
 
 }
+
+
+

@@ -1,20 +1,27 @@
 package advisor.pattern;
 
-import advisor.Menu;
-import advisor.pattern.command.ICommand;
+import advisor.pattern.command.Command;
+import advisor.server.SpotifyAPIService;
+import advisor.server.SpotifyAuthService;
 
 public class Receiver {
 
-    boolean login = false;
-    ICommand authCmd;
-    ICommand newReleaseCmd;
-    ICommand featuredCmd;
-    ICommand categoriesCdm;
-    ICommand playlistCmd;
-    ICommand quitCmd;
+    Command<SpotifyAuthService> authCmd;
+    Command<SpotifyAPIService> newReleaseCmd;
+    Command<SpotifyAPIService> featuredCmd;
+    Command<SpotifyAPIService> categoriesCdm;
+    Command<SpotifyAPIService> playlistCmd;
+    Command<SpotifyAPIService> quitCmd;
 
-    public Receiver(ICommand authCmd, ICommand newReleaseCmd, ICommand featuredCmd, ICommand categoriesCdm,
-                    ICommand playlistCmd, ICommand quitCmd) {
+    SpotifyAuthService authService = new SpotifyAuthService();
+    SpotifyAPIService apiService = new SpotifyAPIService();
+
+    public Receiver(Command<SpotifyAuthService> authCmd,
+                    Command<SpotifyAPIService> newReleaseCmd,
+                    Command<SpotifyAPIService> featuredCmd,
+                    Command<SpotifyAPIService> categoriesCdm,
+                    Command<SpotifyAPIService> playlistCmd,
+                    Command<SpotifyAPIService> quitCmd) {
         this.authCmd = authCmd;
         this.newReleaseCmd = newReleaseCmd;
         this.featuredCmd = featuredCmd;
@@ -24,31 +31,33 @@ public class Receiver {
     }
 
     public void getAuth() {
-        authCmd.execute();
-        login = true;
+        authCmd.execute(authService);
+        apiService.setToken(authService.getAccessToken());
     }
 
     public void getNewRelease() {
-        if (login) newReleaseCmd.execute();
-        else Menu.noAuth();
+        if (authService.isLogged()) {
+            newReleaseCmd.execute(apiService);
+        } else authService.noAuth();
     }
 
     public void getFeatured() {
-        if (login) featuredCmd.execute();
-        else Menu.noAuth();
+        if (authService.isLogged()) featuredCmd.execute(apiService);
+        else authService.noAuth();
     }
 
     public void getCategories() {
-        if (login) categoriesCdm.execute();
-        else Menu.noAuth();
+        if (authService.isLogged()) categoriesCdm.execute(apiService);
+        else authService.noAuth();
     }
-    public void getPlaylist() {
-        if (login) playlistCmd.execute();
-        else Menu.noAuth();
+
+    public void getPlaylist(String playlist) {
+        apiService.setSelectedPlaylist(playlist);
+        if (authService.isLogged()) playlistCmd.execute(apiService);
+        else authService.noAuth();
     }
+
     public void quit() {
-
     }
-
 
 }

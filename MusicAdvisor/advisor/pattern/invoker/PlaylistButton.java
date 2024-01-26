@@ -1,13 +1,14 @@
 package advisor.pattern.invoker;
 
-import advisor.Menu;
 
-public class PlaylistButton implements Button {
+import advisor.dto.Playlists;
 
-    @Override
-    public void print() {
-        Menu.playlist();
+public class PlaylistButton {
+
+    public void printPlaylistDetails(Playlists playlists) {
+        System.out.println(playlists.getName());
+        System.out.println(playlists.getUrls().getUrl());
+        System.out.println();
     }
-
 
 }

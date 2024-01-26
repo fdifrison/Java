@@ -1,13 +1,13 @@
 package advisor.pattern.invoker;
 
-import advisor.Menu;
 
-public class FeatureButton implements Button {
+import advisor.dto.Playlists;
 
-    @Override
-    public void print() {
-        Menu.featured();
+public class FeatureButton {
+
+    public void printPlaylistDetails(Playlists playlists) {
+        System.out.println(playlists.getName());
+        System.out.println(playlists.getUrls().getUrl());
+        System.out.println();
     }
-
-
 }

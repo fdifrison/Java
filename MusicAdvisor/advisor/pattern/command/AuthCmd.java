@@ -1,17 +1,37 @@
 package advisor.pattern.command;
 
-import advisor.pattern.invoker.Button;
+import advisor.pattern.invoker.AuthButton;
+import advisor.server.HTTPClientServer;
+import advisor.server.SpotifyAuthService;
 
-public class AuthCmd implements ICommand {
+import java.io.IOException;
 
-    private final Button button;
+public class AuthCmd extends Command<SpotifyAuthService> {
 
-    public AuthCmd(Button button) {
+    HTTPClientServer server;
+
+    {
+        try {
+            server = new HTTPClientServer();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private final AuthButton button;
+
+    public AuthCmd(AuthButton button) {
         this.button = button;
     }
 
     @Override
-    public void execute() {
-        button.print();
+    public synchronized void execute(SpotifyAuthService service) {
+        button.getAuthorizationCode(service, server);
+        if (button.getAccessToken(service)) return;
+        service.setLogged(true);
+        service.okAuth();
+        System.out.println();
     }
+
+
 }

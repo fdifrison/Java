@@ -1,13 +1,14 @@
 package advisor.pattern.invoker;
 
-import advisor.Menu;
 
-public class NewReleaseButton implements Button {
+import advisor.dto.Albums;
 
-    @Override
-    public void print() {
-        Menu.release();
+public class NewReleaseButton  {
+
+    public void printAlbumDetails(Albums a) {
+        System.out.println(a.getTitle());
+        System.out.println(a.getArtists());
+        System.out.println(a.getUrls().getUrl());
+        System.out.println();
     }
-
-
 }

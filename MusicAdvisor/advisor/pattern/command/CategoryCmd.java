@@ -1,17 +1,29 @@
 package advisor.pattern.command;
 
-import advisor.pattern.invoker.Button;
+import advisor.dto.Categories;
+import advisor.pattern.invoker.CategoryButton;
+import advisor.server.SpotifyAPIService;
 
-public class CategoryCmd implements ICommand {
+import java.util.List;
 
-    private final Button button;
+public class CategoryCmd extends Command<SpotifyAPIService> {
 
-    public CategoryCmd(Button button) {
+    private final CategoryButton button;
+
+    public CategoryCmd(CategoryButton button) {
         this.button = button;
     }
 
     @Override
-    public void execute() {
-        button.print();
+    public void execute(SpotifyAPIService service) {
+
+        var response = service.getCategories();
+
+        if (isError(response)) return ;
+
+        List<Categories> categories = getItemList(response, Categories.class);
+
+        categories.forEach(button::printCategoryDetails);
+
     }
 }
