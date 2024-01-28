@@ -15,6 +15,7 @@ import java.util.List;
 public abstract class Command<S> {
     S service;
 
+
     public abstract void execute(S service);
 
     public abstract void execute(S service, String s);
@@ -47,6 +48,10 @@ public abstract class Command<S> {
         var currPage = root.get("offset").getAsInt() / Main.ELEMENT_PER_PAGE;
         var pages = (int) Math.ceil(root.get("total").getAsDouble() / Main.ELEMENT_PER_PAGE);
         return new Pagination(curr, next, prev, currPage, pages);
+    }
+
+    public void printPage() {
+        System.out.printf("---PAGE %d OF %d---%n", getPagination().getCurrPage() + 1, getPagination().getPages());
     }
 
 

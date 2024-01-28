@@ -33,5 +33,6 @@ public class AuthButton {
         }
         System.out.println("code received");
         authService.setCODE(server.getCODE());
+        server.stop();
     }
 }

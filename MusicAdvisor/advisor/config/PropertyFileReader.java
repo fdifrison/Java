@@ -12,7 +12,7 @@ public class PropertyFileReader {
     static String clientSecret;
 
     static {
-        try (FileInputStream input = new FileInputStream("C:\\Users\\gfrison\\Desktop\\Programming\\HyperSkill\\Music Advisor\\task\\src\\resources\\application.properties")) {
+        try (FileInputStream input = new FileInputStream("C:\\Users\\gfrison\\Desktop\\Hiperskill\\Music Advisor\\Music Advisor\\task\\src\\resources\\application.properties")) {
             properties.load(input);
         } catch (IOException e) {
             System.out.println("No property files found " + e);

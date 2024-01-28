@@ -5,7 +5,7 @@ import advisor.dto.Categories;
 
 public class CategoryButton  {
 
-    public void printCategoryDetails(Categories categories) {
+    public void printDetails(Categories categories) {
         System.out.println(categories.getName());
     }
 }

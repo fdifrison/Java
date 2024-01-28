@@ -41,6 +41,7 @@ public class Receiver {
     public void getNewRelease() {
         if (authService.isLogged()) {
             newReleaseCmd.execute(apiService);
+            this.lastCmd = new LastCmd(newReleaseCmd);
         } else authService.noAuth();
     }
 
@@ -52,13 +53,18 @@ public class Receiver {
     }
 
     public void getCategories() {
-        if (authService.isLogged()) categoriesCdm.execute(apiService);
-        else authService.noAuth();
+        if (authService.isLogged()) {
+            categoriesCdm.execute(apiService);
+            this.lastCmd = new LastCmd(categoriesCdm);
+        } else authService.noAuth();
     }
 
     public void getPlaylist(String playlist) {
         apiService.setSelectedPlaylist(playlist);
-        if (authService.isLogged()) playlistCmd.execute(apiService);
+        if (authService.isLogged()) {
+            playlistCmd.execute(apiService);
+            this.lastCmd = new LastCmd(playlistCmd);
+        }
         else authService.noAuth();
     }
 

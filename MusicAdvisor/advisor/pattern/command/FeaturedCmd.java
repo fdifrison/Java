@@ -1,12 +1,9 @@
 package advisor.pattern.command;
 
-import advisor.Main;
 import advisor.dto.Pagination;
 import advisor.dto.Playlists;
 import advisor.pattern.invoker.FeatureButton;
 import advisor.server.SpotifyAPIService;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
 
 public class FeaturedCmd extends Command<SpotifyAPIService> {
 
@@ -28,8 +25,8 @@ public class FeaturedCmd extends Command<SpotifyAPIService> {
 
         var playlists = getItemList(response, Playlists.class);
 
-        playlists.forEach(button::printPlaylistDetails);
-        System.out.printf("---PAGE %d OF %d---%n", pagination.getCurrPage() + 1, pagination.getPages());
+        playlists.forEach(button::printDetails);
+        printPage();
 
     }
 
@@ -42,8 +39,8 @@ public class FeaturedCmd extends Command<SpotifyAPIService> {
         pagination = setPagination(response, Playlists.class);
 
         var playlists = getItemList(response, Playlists.class);
-        playlists.forEach(button::printPlaylistDetails);
-        System.out.printf("---PAGE %d OF %d---%n", pagination.getCurrPage() + 1, pagination.getPages());
+        playlists.forEach(button::printDetails);
+        printPage();
 
     }
 

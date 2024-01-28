@@ -46,7 +46,7 @@ public class HTTPClientServer {
                     } else {
                         serverAnswerContent = "Authorization code not found. Try again.";
                         bytes = serverAnswerContent.getBytes();
-                        exchange.sendResponseHeaders(401, bytes.length);
+                        exchange.sendResponseHeaders(200, bytes.length);
                     }
                     exchange.getResponseBody().write(bytes);
                     exchange.getResponseBody().close();
@@ -62,7 +62,6 @@ public class HTTPClientServer {
 
     public void awaitResponse() throws InterruptedException {
         latch.await();
-        stop();
     }
 
     public String getCODE() {
