@@ -3,12 +3,105 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="AutomaticModuleUnloader">
+    <loaded-modules>
+      <module name="GitHub" />
+    </loaded-modules>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d86ee5-0330-40a4-9613-53fe18481fbc" name="Changes" comment="" />
+    <list default="true" id="13d86ee5-0330-40a4-9613-53fe18481fbc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/config/PropertyFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/config/PropertyFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/dto/Albums.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/dto/Albums.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/dto/Artist.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/dto/Artist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/dto/Categories.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/dto/Categories.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/dto/ExtUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/dto/ExtUrls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/dto/Pagination.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/dto/Pagination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/dto/Playlists.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/dto/Playlists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/dto/ResponseError.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/dto/ResponseError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/dto/SpotifyUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/dto/SpotifyUrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/Receiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/Receiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/command/AuthCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/command/AuthCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/command/CategoryCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/command/CategoryCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/command/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/command/FeatureCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/command/FeatureCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/command/FeaturedCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/command/FeaturedCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/command/ICommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/command/ICommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/command/LastCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/command/LastCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/command/NewReleaseCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/command/NewReleaseCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/command/PlaylistCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/command/PlaylistCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/command/QuitCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/command/QuitCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/invoker/AuthButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/invoker/AuthButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/invoker/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/invoker/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/invoker/CategoryButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/invoker/CategoryButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/invoker/FeatureButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/invoker/FeatureButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/invoker/NewReleaseButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/invoker/NewReleaseButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/invoker/PlaylistButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/invoker/PlaylistButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/pattern/invoker/QuitButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/pattern/invoker/QuitButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/server/HTTPClientServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/server/HTTPClientServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/server/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/server/IService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/server/SpotifyAPIService.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/server/SpotifyAPIService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/server/SpotifyAuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/server/SpotifyAuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/advisor/utils/WebUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/advisor/utils/WebUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicAdvisor/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/MusicAdvisor/src/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/menu/AddRoadMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/menu/DeleteRoadMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/menu/IMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/menu/MainMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/menu/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/menu/OpenSystemMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/menu/QuitMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/model/CircularQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/model/CircularQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/model/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/model/Road.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/model/RoadState.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/model/RoadState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/model/UserConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/model/UserConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/service/QueueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/service/QueueService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/service/RoadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/service/RoadService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/service/ThreadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/service/ThreadService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/threads/AddThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/threads/DeleteThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/threads/ErrorThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/threads/ITrafficThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/threads/QueueThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/threads/QueueThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/threads/QuitThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/threads/SystemThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/threads/ThreadState.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/threads/ThreadState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/utils/CircularQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/utils/MenuEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/utils/PrintUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/utils/PrintUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficLigth/traffic/utils/ScannerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficLigth/src/traffic/utils/ScannerUtils.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/MusicAdvisor">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/MusicAdvisor">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -26,11 +119,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "Application.advisor.Main.executor": "Run",
+    "Application.traffic.Main.executor": "Run",
+    "Gradle.Build MusicAdvisor.executor": "Run",
+    "Gradle.MusicAdvisor [dependencies].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/gfrison/Desktop/Aruba/GitLab/areaclienti",
+    "last_opened_file_path": "C:/Users/gfrison/Desktop/Programming/GitHub/Java/MusicAdvisor/src",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -43,11 +140,32 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gfrison\Desktop\Programming\GitHub\Java\TrafficLigth\src" />
+      <recent name="C:\Users\gfrison\Desktop\Programming\GitHub\Java\MusicAdvisor" />
+      <recent name="C:\Users\gfrison\Desktop\Programming\GitHub\Java\MusicAdvisor\src" />
+      <recent name="C:\Users\gfrison\Desktop\Programming\GitHub\Java\MusicAdvisor\advisor\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="advisor.Main" />
+      <module name="GitHub" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MusicAdvisor/src" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="advisor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="traffic.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="traffic.Main" />
-      <module name="Java" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TrafficLight" />
+      <module name="GitHub" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="traffic.*" />
@@ -61,14 +179,14 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.traffic.Main" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.9-corretto-17.0.9-249ae16d76d6-98297cd8" />
-        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
+        <option value="jdk-17.0.9-corretto-17.0.9-f644763e9732-ebaef533" />
       </set>
     </attachedChunks>
   </component>
@@ -83,10 +201,15 @@
       <workItem from="1705142742805" duration="277000" />
       <workItem from="1705143025723" duration="49000" />
       <workItem from="1705143111244" duration="985000" />
+      <workItem from="1706515629826" duration="1456000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnloadedModulesList">
+    <module name="MusicAdvisor.main" />
+    <module name="MusicAdvisor.test" />
   </component>
 </project>

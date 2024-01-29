@@ -6,8 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ChuckNorrisUnaryEncoder" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ChuckNorrisUnaryEncoder" target="1.5" />
+      <module name="MusicAdvisor" target="17" />
+      <module name="MusicAdvisor.main" target="17" />
+      <module name="MusicAdvisor.test" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
